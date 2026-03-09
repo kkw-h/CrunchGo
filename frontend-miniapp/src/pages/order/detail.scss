@@ -1,0 +1,118 @@
+.order-detail-page {
+  padding: 16px;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  .status-card {
+    background-color: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    .status-text {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+      
+      &.pending { color: #ff9800; }
+      &.paid { color: #2196f3; }
+      &.completed { color: #4caf50; }
+      &.cancelled { color: #999; }
+    }
+
+    .pickup-code {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 12px;
+      display: block;
+    }
+    
+    .pickup-label {
+      font-size: 12px;
+      color: #999;
+    }
+  }
+
+  .detail-card {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: block;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+
+      .item-name { color: #333; }
+      .item-qty { color: #999; margin-right: 8px; }
+      .item-price { color: #333; font-weight: 500; }
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed #eee;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+
+  .action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    padding-bottom: calc(16px + constant(safe-area-inset-bottom));
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+
+    .btn {
+      flex: 1;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 22px;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0 8px;
+      
+      &.cancel-btn {
+        background-color: #f5f5f5;
+        color: #666;
+      }
+      
+      &.pay-btn {
+        background-color: #333;
+        color: #fff;
+      }
+      
+      &:active {
+        opacity: 0.9;
+      }
+    }
+  }
+}

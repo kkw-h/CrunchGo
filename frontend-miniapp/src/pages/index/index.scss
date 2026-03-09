@@ -1,0 +1,39 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+
+  .logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff9800;
+    margin-bottom: 20px;
+  }
+
+  .slogan {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .start-btn {
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+    
+    &:active {
+      transform: scale(0.98);
+      background-color: #f57c00;
+    }
+  }
+}
