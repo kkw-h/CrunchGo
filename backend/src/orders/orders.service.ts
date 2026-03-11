@@ -75,7 +75,9 @@ export class OrdersService {
       const order = new Order();
       order.orderNumber = orderNumber;
       order.totalAmount = totalAmount;
-      order.status = OrderStatus.PENDING;
+      // SKIP PAYMENT: Automatically mark as PAID for MVP
+      order.status = OrderStatus.PAID;
+      order.paidAt = new Date();
       order.items = orderItems;
 
       const savedOrder = await queryRunner.manager.save(Order, order);
