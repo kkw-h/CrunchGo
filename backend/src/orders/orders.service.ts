@@ -7,6 +7,7 @@ import { Product } from '../products/entities/product.entity';
 import { CreateOrderDto, CreateOrderItemDto } from './dto/create-order.dto';
 import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
 import { RedisService } from '../redis/redis.service';
+import { PrinterService } from '../printer/printer.service';
 
 @Injectable()
 export class OrdersService {
@@ -16,6 +17,7 @@ export class OrdersService {
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
     private readonly redisService: RedisService,
+    private readonly printerService: PrinterService,
     private readonly dataSource: DataSource,
   ) {}
 
@@ -84,6 +86,12 @@ export class OrdersService {
       const savedOrder = await queryRunner.manager.save(Order, order);
 
       await queryRunner.commitTransaction();
+
+      // Print Receipt asynchronously (don't block response)
+      this.printerService.printOrder(savedOrder).catch(err => {
+        console.error('Failed to print receipt', err);
+      });
+
       return savedOrder;
     } catch (err) {
       await queryRunner.rollbackTransaction();
