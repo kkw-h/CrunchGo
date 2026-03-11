@@ -27,9 +27,9 @@ export class Product {
   @Column({ default: true })
   isAvailable: boolean;
 
-  @ManyToOne(() => Category, (category) => category.products, { onDelete: 'SET NULL' })
+  @ManyToOne(() => Category, (category) => category.products, { onDelete: 'SET NULL', nullable: true })
   @JoinColumn({ name: 'categoryId' })
-  category: Category;
+  category: Category | null;
 
   @Column({ nullable: true })
   categoryId: number;
