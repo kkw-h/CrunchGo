@@ -18,6 +18,11 @@ export interface Order {
   totalAmount: number;
   status: string;
   createdAt: string;
+  items?: {
+    productName: string;
+    quantity: number;
+    options: any;
+  }[];
 }
 
 export const orderService = {
@@ -34,6 +39,33 @@ export const orderService = {
       return response.data;
     } catch (error) {
       console.error('Failed to create order:', error);
+      throw error;
+    }
+  },
+
+  async getOrders(): Promise<Order[]> {
+    try {
+      const response = await Taro.request({
+        url: `${API_BASE_URL}/orders`,
+        method: 'GET',
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch orders:', error);
+      throw error;
+    }
+  },
+
+  async updateOrderStatus(id: string, status: string): Promise<Order> {
+    try {
+      const response = await Taro.request({
+        url: `${API_BASE_URL}/orders/${id}/status`,
+        method: 'PATCH',
+        data: { status },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Failed to update order status:', error);
       throw error;
     }
   },
