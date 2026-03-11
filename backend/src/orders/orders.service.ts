@@ -5,6 +5,7 @@ import { Order, OrderStatus } from './entities/order.entity';
 import { OrderItem } from './entities/order-item.entity';
 import { Product } from '../products/entities/product.entity';
 import { CreateOrderDto, CreateOrderItemDto } from './dto/create-order.dto';
+import { UpdateOrderStatusDto } from './dto/update-order-status.dto';
 import { RedisService } from '../redis/redis.service';
 
 @Injectable()
@@ -108,6 +109,12 @@ export class OrdersService {
       throw new NotFoundException(`Order #${id} not found`);
     }
     return order;
+  }
+
+  async updateStatus(id: string, updateOrderStatusDto: UpdateOrderStatusDto): Promise<Order> {
+    const order = await this.findOne(id);
+    order.status = updateOrderStatusDto.status;
+    return this.orderRepository.save(order);
   }
 
   private async generateOrderNumber(): Promise<string> {
