@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
 import { useLaunch } from '@tarojs/taro'
 import { ConfigProvider } from '@nutui/nutui-react-taro'
+import { CartProvider } from './context/CartProvider'
 import '@nutui/nutui-react-taro/dist/style.css'
 
 import './app.scss'
@@ -18,7 +19,9 @@ function App({ children }: PropsWithChildren<any>) {
   // children 是将要会渲染的页面
   return (
     <ConfigProvider theme={theme}>
-      {children}
+      <CartProvider>
+        {children}
+      </CartProvider>
     </ConfigProvider>
   )
 }
