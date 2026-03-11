@@ -45,6 +45,9 @@ export default function Index () {
 
     showLoading({ title: '正在下单...' })
     try {
+      // Simulate payment delay
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
       const orderData = {
         items: items.map(item => ({
           productId: item.product.id,
@@ -56,7 +59,7 @@ export default function Index () {
       const order = await orderService.createOrder(orderData)
       
       hideLoading()
-      showToast({ title: `下单成功! 取餐号: ${order.orderNumber}`, icon: 'success', duration: 3000 })
+      showToast({ title: `支付成功! 取餐号: ${order.orderNumber}`, icon: 'success', duration: 3000 })
       clearCart()
       
       // TODO: Navigate to Order Detail or Success Page
