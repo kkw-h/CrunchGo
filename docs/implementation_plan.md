@@ -61,9 +61,9 @@
 ## 6. 实施路线图 (Timeline)
 
 ### 第一阶段：原型与基础 (Week 1)
-- [ ] 搭建 NestJS 后端项目框架，配置 Postgres & Redis。
-- [ ] 搭建 Taro 小程序项目框架，配置 UI 库 (如 Taro UI 或 NutUI)。
-- [ ] 数据库表结构设计与迁移 (Migration)。
+- [x] 搭建 NestJS 后端项目框架，配置 Postgres & Redis。
+- [x] 搭建 Taro 小程序项目框架，配置 UI 库 (如 Taro UI 或 NutUI)。
+- [x] 数据库表结构设计与迁移 (Migration)。
 
 ### 第二阶段：核心交易链路 (Week 2)
 - [ ] 完成商品管理 API 与展示。
